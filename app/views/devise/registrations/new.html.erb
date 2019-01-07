@@ -1,0 +1,27 @@
+<% content_for :title do %><%= I18n.t 'devise.registrations.new.sign_up' %><% end %>
+<% content_for :description, '' %>
+
+<% content_for :body do %>
+  <div class="row justify-content-md-center">
+    <div class="col-sm-12 col-md-3">
+      <h1 class="h1"><%= I18n.t 'devise.registrations.new.sign_up' %></h1>
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html=> { class: 'mt-4' }) do |f| %>
+
+        <%= f.input :email, required: true %>
+        <%= f.input :username, label: I18n.t('application.registration.username') %>
+        <%= f.input :password, required: true, wrapper_html: { class: 'mb-0' } %>
+        <% if @minimum_password_length %>
+          <em><%= "#{I18n.t 'devise.shared.minimum_password_length.other', count: @minimum_password_length}" %></em>
+        <% end %>
+        <%= f.input :password_confirmation, required: true, wrapper_html: { class: 'mt-3' } %>
+
+        <div class="actions">
+          <%= f.button :submit, class: 'btn-secondary mt-3 mb-4' %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+<% end %>

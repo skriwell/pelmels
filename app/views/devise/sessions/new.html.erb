@@ -1,0 +1,27 @@
+<% content_for :title do %><%= I18n.t 'devise.sessions.new.sign_up' %><% end %>
+<% content_for :description, '' %>
+
+<% content_for :body do %>
+  <div class="row justify-content-md-center">
+    <div class="col-sm-12 col-md-3">
+      <h1 class="h1"><%= I18n.t 'devise.sessions.new.sign_in' %></h1>
+
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html=> { class: 'mt-4' }) do |f| %>
+
+        <%= f.input :login, required: true, label: I18n.t('application.sessions.login') %>
+        <%= f.input :password, required: true %>
+
+        <% if devise_mapping.rememberable? %>
+          <%= f.input :remember_me, as: :boolean %>
+        <% end %>
+
+        <div class="actions">
+          <%= f.button :submit, I18n.t('devise.sessions.new.sign_in'), class: 'btn-secondary mt-3 mb-4' %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+
+    </div>
+  </div>
+<% end %>

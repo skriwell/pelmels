@@ -60,4 +60,14 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: ENV['SMTP_SERVER'],
+      port: ENV['SMTP_PORT']
+  }
+  config.action_mailer.default_url_options = { host: ENV['HOST'], port: 3000}
+
+  # Make javascript_pack_tag load assets from webpack-dev-server.
+  config.x.webpacker[:dev_server_host] = 'http://0.0.0.0:8080'
 end

@@ -1,0 +1,6 @@
+fr:
+  application:
+    registration:
+      username: Nom d'utilisateur
+    sessions:
+      login: Nom d'utilisateur ou email
